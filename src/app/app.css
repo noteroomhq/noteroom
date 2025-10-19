@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --blue-shade-l: #42ACDE;
+  --blue-shade-d: #3F8FB5;
+}
+
+body {
+  font-family: "Inter", Arial;
+  background-color: #f9fafb;
+}

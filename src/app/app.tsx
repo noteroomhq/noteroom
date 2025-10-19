@@ -1,11 +1,10 @@
-import NavBar from "../components/navbar";
+// import NavBar from "../components/navbar";
 import AppRouters from "./router";
 
 export default function App() {
     return (
         <>
-            <NavBar />
-            
+            {/* removed navbar for cleaner auth pages */}
             <AppRouters />
         </>
     )
