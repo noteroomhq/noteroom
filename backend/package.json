@@ -1,15 +1,11 @@
 {
-  "name": "server",
+  "name": "backend",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/main.js",
+  "type": "commonjs",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --watch src src/main.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.1.0"

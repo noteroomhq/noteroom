@@ -9,10 +9,20 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	const handleLogin = (e: React.FormEvent) => {
+	const handleLogin = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// TODO: connect to backend later
-		console.log("Login attempt:", { email, password });
+
+		const response = await fetch('/api/auth/login', {
+			method: 'post',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, password })
+		})
+		if (response && response.ok) {
+			const data = await response.json()
+			console.log(data)
+		}
 	};
 
 	return (
