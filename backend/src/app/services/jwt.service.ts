@@ -1,10 +1,7 @@
 import jwt from "jsonwebtoken";
 import { config } from "../../utils";
+import { JWTUser } from "@types/users";
 
-type JWTUser = {
-    username: String,
-    email: String
-}
 const jwtSecretToken = config("services.jwt.secret")
 
 export function createJWTToken(user: JWTUser): string {
