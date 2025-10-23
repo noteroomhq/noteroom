@@ -6,5 +6,8 @@
     "scripts": {
         "dev:frontend": "npm run dev --workspace=frontend",
         "dev:backend": "npm run dev --workspace=backend"
+    },
+    "dependencies": {
+        "commander": "^14.0.1"
     }
 }
