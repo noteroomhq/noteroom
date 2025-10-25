@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { createJWTToken } from "../services/jwt.service"
+import { createJWTToken } from "@services/jwt.service"
 import { JWTUser } from "@shared-types/users";
+import { IController } from "@lib/webrouter";
 
-export default class AuthController {
+export default class AuthController implements IController {
     async login(req: Request, res: Response, next: NextFunction) {
         try {
             const { email, password } = req.body

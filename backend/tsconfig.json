@@ -5,7 +5,11 @@
     "rootDir": "../",
     "outDir": "./dist",
     "paths": {
-      "@shared-types/*": ["../types/*"]
+      "@shared-types/*": ["../types/*"],
+      "@controllers/*": ["./src/app/controllers/*"],
+      "@middlewares/*": ["./src/app/middlewares/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@lib/*": ["./src/lib/*"],
     },
     "allowImportingTsExtensions": false,
     "allowJs": true,

@@ -1,20 +1,20 @@
-import AuthController from './../app/controllers/auth.controller';
-import { Router } from "express"
+import AuthController from '@controllers/auth.controller';
+import { RouterGroup, MainRouterGroup } from '@lib/webrouter';
+import { JWTParser } from '@middlewares/jwtparser.middleware';
 
-const router = Router() 
-
-function AuthRouter() {
-    const authRouter = Router()
-    const controller = new AuthController()
-
-    authRouter.post("/login", controller.login.bind(controller))
-    authRouter.post("/signup", controller.signup.bind(controller))
-
-    return authRouter
-}
+RouterGroup.new("/auth", [JWTParser], [
+    {
+        route: '/login',
+        method: 'post',
+        handler: [AuthController, 'login']
+    },
+    {
+        route: '/signup',
+        method: 'post',
+        handler: [AuthController, 'signup']
+    }
+])
 
 export default function WebRouter() {
-    router.use("/auth", AuthRouter())
-
-    return router
+    return MainRouterGroup.all()
 }
