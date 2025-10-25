@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { config } from "../../utils";
-import { JWTUser } from "@types/users";
+import { JWTUser } from "@shared-types/users";
 
 const jwtSecretToken = config("services.jwt.secret")
 

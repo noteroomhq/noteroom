@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { createJWTToken } from "../services/jwt.service"
-import { JWTUser } from "@types/users";
+import { JWTUser } from "@shared-types/users";
 
 export default class AuthController {
     async login(req: Request, res: Response, next: NextFunction) {

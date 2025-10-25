@@ -5,7 +5,7 @@
     "rootDir": "../",
     "outDir": "./dist",
     "paths": {
-      "@types/*": ["../types/*"]
+      "@shared-types/*": ["../types/*"]
     },
     "allowImportingTsExtensions": false,
     "allowJs": true,
