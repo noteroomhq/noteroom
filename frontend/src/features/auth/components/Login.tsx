@@ -33,12 +33,14 @@ const Login = () => {
 				<form className="flex flex-col gap-4" onSubmit={handleLogin}>
 					<AuthInput
 						label="Email"
+						name="email"
 						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<AuthInput
 						label="Password"
+						name="password"
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}

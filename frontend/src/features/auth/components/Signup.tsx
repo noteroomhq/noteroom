@@ -28,9 +28,9 @@ const Signup = () => {
 				<h1 className="text-3xl font-bold mb-6 text-center">Welcome to NoteRoom</h1>
 
 				<form className="flex flex-col gap-4" onSubmit={handleSignup}>
-					<AuthInput label="Full Name" value={form.name} onChange={handleChange} />
-					<AuthInput label="Email" type="email" value={form.email} onChange={handleChange} />
-					<AuthInput label="Password" type="password" value={form.password} onChange={handleChange} />
+					<AuthInput label="Full Name" name="name" value={form.name} onChange={handleChange} />
+					<AuthInput label="Email" name="email" type="email" value={form.email} onChange={handleChange} />
+					<AuthInput label="Password" name="password" type="password" value={form.password} onChange={handleChange} />
 
 					<AuthBtn label="Sign Up" />
 
