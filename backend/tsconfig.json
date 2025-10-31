@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "rootDir": "../",
+    "outDir": "./dist",
+    "paths": {
+      "@shared-types/*": ["../types/*"],
+      "@controllers/*": ["./src/app/controllers/*"],
+      "@middlewares/*": ["./src/app/middlewares/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@lib/*": ["./src/lib/*"],
+    },
+    "allowImportingTsExtensions": false,
+    "allowJs": true,
+    "checkJs": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true
+  },
+  "include": ["src", "../types"],
+  "exclude": ["node_modules", "dist", "__tests__"]
+}

@@ -22,7 +22,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@shared-types/*": ["../types/*"],
+    }
   },
-  "include": ["src"]
+  "include": ["src", "../types"]
 }
