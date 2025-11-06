@@ -20,4 +20,9 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off"
+    }
+  }
 ])

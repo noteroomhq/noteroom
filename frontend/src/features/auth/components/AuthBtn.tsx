@@ -1,7 +1,8 @@
-const AuthButton = ({ label, onClick }: { label: string; onClick?: () => void }) => (
+const AuthButton = ({ label, onClick, disabled=false }: { label: string; onClick?: (e: React.FormEvent) => void, disabled?: boolean}) => (
 	<button
 		onClick={onClick}
-		className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+		className={"w-full text-white py-2 rounded-lg transition " + (disabled ? "cursor-not-allowed bg-blue-300" : "bg-blue-500 hover:bg-blue-700")}
+		disabled={disabled}
 	>
 		{label}
 	</button>
