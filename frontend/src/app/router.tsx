@@ -1,6 +1,6 @@
 import IndexPage from "../features/index-page/components";
 import Feed from "../features/feed/components";
-import {Signup, Login} from "../features/auth/components/index";
+import {Signup, Login, ForgotPassword} from "../features/auth/components/index";
 import { Route, Routes } from "react-router-dom";
 
 export default function AppRouters() {
@@ -11,6 +11,7 @@ export default function AppRouters() {
                 <Route path="/feed" element={ <Feed /> }></Route>
                 <Route path="/signup" element={ <Signup /> }></Route>
                 <Route path="/login" element={ <Login /> }></Route>
+                <Route path="/forgot-password" element={ <ForgotPassword /> }></Route>
             </Routes>
         </>
     )
