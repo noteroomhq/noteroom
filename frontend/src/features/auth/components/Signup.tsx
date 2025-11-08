@@ -19,7 +19,7 @@ const checkPasswordCriteria = (password: string): TPasswordCriteria => ({
 const SignupFormSchema = z.object({
 	name: z.string().min(4, "Full Name must be more than four characters"),
 	email: z.email("Please enter a valid email address"),
-	password: z.string().min(6, "Password must be at least 6 characters")
+	password: z.string().min(6, "Your password must meet below requirements")
 		.refine(val => Object.values(checkPasswordCriteria(val)).every(v => v),
 		{ error: "Password must contain uppercases, lowercases and numbers" })
 })
