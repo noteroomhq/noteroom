@@ -1,57 +1,70 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthLayout from "./AuthLayout";
 import AuthInput from "./AuthInput";
 import AuthBtn from "./AuthBtn";
 import LoginImage from "../assets/images/login-page-img.png";
+import z, { treeifyError } from "zod";
+
+const LoginFormSchema = z.object({
+	email: z.email("Please provide a valid email address."),
+	password: z.string().min(1, "Password is required.")
+})
+type TFormData = z.infer<typeof LoginFormSchema>
+type TErrors = { email?: string, password?: string }
+
 
 const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [form, setForm] = useState<TFormData>({
+		email: "",
+		password: ""
+	})
+	const [errors, setErrors] = useState<TErrors>({
+		email: "",
+		password: ""
+	})
+	const [isFormValid, setIsFormValid] = useState<boolean>(false)
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
-	// Field-specific validation errors
-	const [emailError, setEmailError] = useState<string | null>(null);
-	const [passwordError, setPasswordError] = useState<string | null>(null);
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setForm({ ...form, [e.target.name]: e.target.value });
+	}
 
-	// Simple email validation regex
-	const validateEmail = (email: string) => {
-		const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return regex.test(email);
-	};
+	const validateForm = useCallback(() => {
+		if (form.email || form.password) {
+			const newErrors: TErrors = {}
+
+			const parsedFormData = LoginFormSchema.safeParse(form)
+			if (!parsedFormData.success) {
+				const { properties } = treeifyError(parsedFormData.error)
+				if (properties) {
+					(Object.keys(properties) as Array<keyof TFormData>).forEach(key => {
+						const error = properties[key]?.errors[0]
+						newErrors[key] = error
+					})
+				}
+			}
+
+			setIsFormValid(parsedFormData.success)
+			setErrors(newErrors)
+		}
+	}, [form])
+
+	useEffect(() => {
+		validateForm()
+	}, [form, validateForm])
 
 	const handleLogin = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setError(null);
-		setEmailError(null);
-		setPasswordError(null);
-
-		let isValid = true;
-
-		// Client-side validation before API call
-		if (!email.trim()) {
-			setEmailError("Email is required.");
-			isValid = false;
-		} else if (!validateEmail(email)) {
-			setEmailError("Please provide a valid email address.");
-			isValid = false;
-		}
-
-		if (!password.trim()) {
-			setPasswordError("Password is required.");
-			isValid = false;
-		}
-
-		if (!isValid) return; // Stop if validation fails
-
-		setLoading(true);
+		
+		setLoading(true)
 
 		try {
 			const response = await fetch("/api/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ email, password }),
+				body: JSON.stringify({ email: form.email, password: form.password }),
 			});
 
 			if (!response.ok) {
@@ -67,7 +80,6 @@ const Login = () => {
 
 			const data = await response.json();
 			console.log("Login success:", data);
-			// redirect logic here (navigate("/dashboard")) etc.
 		} catch (err) {
 			setError("Network error. Please check your connection.");
 		} finally {
@@ -87,9 +99,9 @@ const Login = () => {
 						label="Email"
 						name="email"
 						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						errorMessage={emailError || undefined}
+						value={form.email}
+						onChange={handleChange}
+						errorMessage={errors.email}
 						disabled={loading}
 						required
 					/>
@@ -97,9 +109,9 @@ const Login = () => {
 						label="Password"
 						name="password"
 						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						errorMessage={passwordError || undefined}
+						value={form.password}
+						onChange={handleChange}
+						errorMessage={errors.password}
 						disabled={loading}
 						required
 					/>
@@ -108,7 +120,7 @@ const Login = () => {
 						<p className="text-red-500 text-sm text-center mt-2">{error}</p>
 					)}
 
-					<AuthBtn label={loading ? "Logging in..." : "Login"} disabled={loading} />
+					<AuthBtn label={loading ? "Logging in..." : "Login"} onClick={handleLogin} disabled={loading || !isFormValid} />
 
 					<p className="text-sm text-center mt-4 text-gray-500">
 						Don’t have an account?{" "}

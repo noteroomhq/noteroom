@@ -32,23 +32,21 @@ const Signup = () => {
 		email: "",
 		password: "",
 	});
-
 	const [errors, setErrors] = useState<TErrors>({
 		name: "",
 		email: "",
 		password: "",
 	});
-
 	const [passwordCriteria, setPasswordCriteria] = useState<TPasswordCriteria>({
 		minLength: false,
 		upperCase: false,
 		lowerCase: false,
 		number: false,
 	});
-
 	const [isFormValid, setIsFormValid] = useState(false);
 	const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(false); // Track password visibility
+	const [loading, setLoading] = useState<boolean>(false)
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -86,6 +84,18 @@ const Signup = () => {
 
 	const handleSignup = (e: React.FormEvent) => {
 		e.preventDefault();
+
+		setLoading(true)
+
+		try {
+			setTimeout(() => {
+				setLoading(false)
+			}, 3000)
+		} catch (error) {
+			console.error(error)
+		} finally {
+			setLoading(false)
+		}
 		
 		//TODO: backend for signup
 		console.log(form)
@@ -203,7 +213,7 @@ const Signup = () => {
 						)}
 					</div>
 
-					<AuthBtn label="Sign Up" onClick={handleSignup} disabled={!isFormValid} />
+					<AuthBtn label={loading ? "Signing in..." : "Sign Up"} onClick={handleSignup} disabled={loading || !isFormValid} />
 
 					<p className="text-sm text-center mt-4 text-gray-500">
 						Already have an account?{" "}
