@@ -39,7 +39,7 @@ const AuthInput = ({
 		<div className="mb-4">
 			<label
 				htmlFor={label}
-				className="block mb-1 text-sm font-medium text-gray-700"
+				className="block mb-1 text-sm font-normal text-black"
 			>
 				{label}
 				{required && <span className="text-red-500">*</span>}
@@ -52,7 +52,7 @@ const AuthInput = ({
 					value={value}
 					onChange={onChange}
 					placeholder={placeholder}
-					className={`w-full border ${errorMessage ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"} rounded-lg px-3 py-2 focus:ring-2 outline-none ${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
+					className={`w-full text-xs border rounded-[18px] caret-[#42ACDE] ${errorMessage ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:border-[#42ACDE]"} px-3 py-3 outline-none ${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
 					autoFocus={autoFocus}
 					disabled={disabled}
 				/>
