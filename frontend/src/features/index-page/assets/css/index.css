@@ -1,0 +1,85 @@
+div.index {
+    background-color: beige;
+}
+
+/* ================================
+   File: src/index.css
+   Purpose: Local font wiring + Tailwind
+   Note: paths are relative to this file
+   ================================ */
+
+/* --------------------------------
+   Local fonts
+   -------------------------------- */
+
+/* Inter – Variable (normal) */
+@font-face {
+  font-family: "Inter";
+  src: url("../Fonts/Inter/static/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter – Variable (italic) */
+@font-face {
+  font-family: "Inter";
+  src: url("../Fonts/Inter/static/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Space Grotesk – Variable */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../Fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hind Siliguri – static weights */
+@font-face {
+  font-family: "Hind Siliguri";
+  src: url("../Fonts/Hind_Siliguri/HindSiliguri-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hind Siliguri";
+  src: url("../Fonts/Hind_Siliguri/HindSiliguri-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hind Siliguri";
+  src: url("../Fonts/Hind_Siliguri/HindSiliguri-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hind Siliguri";
+  src: url("../Fonts/Hind_Siliguri/HindSiliguri-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hind Siliguri";
+  src: url("../Fonts/Hind_Siliguri/HindSiliguri-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------
+   Set app-wide default font
+   -------------------------------- */
+@layer base {
+  /* Maps Tailwind's font-sans to Inter by default (from tailwind.config) */
+  html { font-family: theme('fontFamily.sans'); }
+}
