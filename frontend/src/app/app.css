@@ -1,12 +1,27 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Georama:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind utilities;
 
 :root {
   --blue-shade-l: #42ACDE;
   --blue-shade-d: #3F8FB5;
+  --leftpanel-maincontainer-clr: #f4f4f2;
+	--primary-secondary-rightpanel-clr: #ffffff;
 }
 
 body {
   font-family: "Inter", Arial;
   background-color: #f9fafb;
+}
+
+.left-panel {
+	scrollbar-width: none;
+	scrollbar-color: transparent transparent;
+}
+
+.scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: #42ACDE var(--leftpanel-maincontainer-clr);
 }

@@ -1,11 +1,25 @@
-import "../assets/css/index.css";
+import { useEffect, useState } from "react";
+import PostSection from "./post-section/PostSection";
+import FeedSection from "./feed-section/FeedSection";
+import { useFloatingElementContext } from "../../../contexts/FloatingElementsContext";
 
 export default function Feed() {
+    const { 
+		floatingOverlay: [, setOpenFloatingElement], 
+		overlayElements: { 
+			postContainer: [openPostContainer, setOpenPostContainer] 
+		} 
+	} = useFloatingElementContext()!
+
+
+    useEffect(() => {
+    	setOpenFloatingElement(openPostContainer)
+    }, [openPostContainer, setOpenFloatingElement])
+
     return (
         <>
-            <div className="feed text-2xl">
-                <h1>This is the feed section!</h1>
-            </div>
+            <PostSection onClick={() => setOpenPostContainer(true)} />
+            <FeedSection />
         </>
     )
 }
