@@ -28,7 +28,7 @@ export default function PostContainer({ setOpen: setOpenPostContainer }: { setOp
 	
 
 	const mediaRef = useRef<HTMLInputElement | null>(null)
-	function addMedia(mediaRef: React.RefObject<HTMLInputElement | null>) {
+	function addMedia() {
 		mediaRef.current?.click()
 	}
 
@@ -84,7 +84,7 @@ export default function PostContainer({ setOpen: setOpenPostContainer }: { setOp
 							</div>
 							
 							<div className="interactive-content mt-2.5 flex justify-center items-center">
-								{ showTools.media && <MediaPost extendedClass='min-h-[300px] min-[2000px]:min-h-[360px]' />}
+								{ showTools.media && <MediaPost extendedClass='min-h-[300px] min-[2000px]:min-h-[360px]' addMedia={() => addMedia()} />}
 								{ showTools.poll && <PollPost extendedClass='min-h-[150px]' />}
 							</div>
 						</div>
@@ -99,7 +99,7 @@ export default function PostContainer({ setOpen: setOpenPostContainer }: { setOp
 					</div>
 				</div>
 
-				<PostSectionTools extendedClass='p-5 w-full flex justify-between h-[60px]' inAction={true} actions={[() => addMedia(mediaRef), () => openCloseTool("poll", undefined, true)] } />
+				<PostSectionTools extendedClass='p-5 w-full flex justify-between h-[60px]' inAction={true} actions={[() => addMedia(), () => openCloseTool("poll", undefined, true)] } />
 			</div>
 		</>
 	)
