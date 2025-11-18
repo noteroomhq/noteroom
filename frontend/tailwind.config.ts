@@ -11,7 +11,7 @@ export default {
         primaryBlueDarkLm: "#0F92CF",
         primaryBlueLightLm: "#A0D5EE",
         // Dark mode colors
-        primaryBlueDm: "#04DBFF7",     
+        primaryBlueDm: "#04DBF7",     
         primaryBlueDarkDm: "#25A4B4",
         primaryBlueLightDm: "#0F7D8D",
         // Light mode colors
@@ -31,11 +31,16 @@ export default {
         
       },
 
-      fontFamily: {
-        inter: ["Inter", "sans-serif"],
-        poppins: ["Roboto", "sans-serif"],
-        spaceGrotesk: ["Space Grotesk", "sans-serif"]
+      extend: {
+        fontFamily: {
+          sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"], 
+          inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+          heading: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
+          bengali: ["Hind Siliguri", "Inter", "system-ui", "sans-serif"],
+          spaceGrotesk: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
+        },
       },
+
 
       fontSize: {
         // desktop heading sizes

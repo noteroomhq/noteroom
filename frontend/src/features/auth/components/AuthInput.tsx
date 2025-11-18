@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 
-interface AuthInputProps {
+interface AuthInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
-	name: string;
-	type?: string;
-	value: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-	onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-	placeholder?: string;
 	errorMessage?: string;
-	required?: boolean;
-	autoFocus?: boolean;
-	disabled?: boolean;
 }
 
 const AuthInput = ({
@@ -21,6 +11,7 @@ const AuthInput = ({
 	type = "text",
 	value,
 	onChange,
+	onFocus,
 	placeholder,
 	errorMessage,
 	required = false,
@@ -39,7 +30,7 @@ const AuthInput = ({
 		<div className="mb-4">
 			<label
 				htmlFor={label}
-				className="block mb-1 text-sm font-medium text-gray-700"
+				className="block mb-1 text-sm font-normal text-black"
 			>
 				{label}
 				{required && <span className="text-red-500">*</span>}
@@ -51,8 +42,9 @@ const AuthInput = ({
 					name={name}
 					value={value}
 					onChange={onChange}
+					onFocus={onFocus}
 					placeholder={placeholder}
-					className={`w-full border ${errorMessage ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"} rounded-lg px-3 py-2 focus:ring-2 outline-none ${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
+					className={`w-full text-xs border rounded-[18px] caret-[#42ACDE] ${errorMessage ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:border-[#42ACDE]"} px-3 py-3 outline-none ${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
 					autoFocus={autoFocus}
 					disabled={disabled}
 				/>
