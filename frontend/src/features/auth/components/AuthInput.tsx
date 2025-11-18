@@ -7,16 +7,12 @@ interface AuthInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const AuthInput = ({
 	label,
-	name,
 	type = "text",
-	value,
-	onChange,
-	onFocus,
-	placeholder,
 	errorMessage,
-	required = false,
+	required = true,
 	autoFocus = false,
 	disabled = false,
+	...rest
 }: AuthInputProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 
@@ -39,14 +35,10 @@ const AuthInput = ({
 				<input
 					id={label}
 					type={inputType}
-					name={name}
-					value={value}
-					onChange={onChange}
-					onFocus={onFocus}
-					placeholder={placeholder}
 					className={`w-full text-xs border rounded-[18px] caret-[#42ACDE] ${errorMessage ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:border-[#42ACDE]"} px-3 py-3 outline-none ${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
 					autoFocus={autoFocus}
 					disabled={disabled}
+					{...rest}
 				/>
 				{type === "password" && (
 					<button

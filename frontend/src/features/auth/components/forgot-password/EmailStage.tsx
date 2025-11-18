@@ -1,8 +1,9 @@
 import React from 'react'
 import AuthInput from '../AuthInput'
 import AuthButton from '../AuthBtn'
+import type { StateController } from '@stypes/global'
 
-export default function EmailStage({ email: [email, setEmail], error: [apiError, emailError], isLoading, handleEmailSubmit }: { handleEmailSubmit: (e: React.FormEvent) => void, isLoading: boolean, error: [string | null, string | null], email: [string, React.Dispatch<React.SetStateAction<string>>] }) {
+export default function EmailStage({ email: [email, setEmail], error: [apiError, emailError], isLoading, handleEmailSubmit }: { handleEmailSubmit: (e: React.FormEvent) => void, isLoading: boolean, error: [string | null, string | null], email: StateController<string> }) {
     return (
         <form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
             <h1 className="text-3xl font-bold mb-1 text-center">Forgot Password</h1>

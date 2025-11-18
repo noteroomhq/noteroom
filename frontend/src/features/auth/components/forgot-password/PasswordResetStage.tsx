@@ -3,8 +3,9 @@ import StrictPasswordInput from '../StrictPasswordInput'
 import AuthButton from '../AuthBtn'
 import AuthInput from '../AuthInput'
 import { isPasswordValid } from '../../utils'
+import type { StateController } from '@stypes/global'
 
-export default function PasswordResetStage({ isLoading, handleResetSubmit, passwords: [[password, setPassword], [confirmPassword, setConfirmPassword]], errors: [apiError, [resetPasswordError, setResetPasswordError]] }: { isLoading: boolean,  errors: [string | null, [string | null, React.Dispatch<React.SetStateAction<string | null>>]], passwords: [[string, React.Dispatch<React.SetStateAction<string>>], [string, React.Dispatch<React.SetStateAction<string>>]], handleResetSubmit: (e: React.FormEvent<HTMLFormElement>) => void }) {
+export default function PasswordResetStage({ isLoading, handleResetSubmit, passwords: [[password, setPassword], [confirmPassword, setConfirmPassword]], errors: [apiError, [resetPasswordError, setResetPasswordError]] }: { isLoading: boolean,  errors: [string | null, StateController<string | null>], passwords: [StateController<string>, StateController<string>], handleResetSubmit: (e: React.FormEvent<HTMLFormElement>) => void }) {
     const [validPasswords, setValidPasswords] = useState<boolean>(false)
     
     useEffect(() => {
@@ -20,8 +21,7 @@ export default function PasswordResetStage({ isLoading, handleResetSubmit, passw
             </p>
 
             <StrictPasswordInput
-                password={[password, setPassword]}
-                error={null}
+                password={[password, function(e: React.ChangeEvent<HTMLInputElement>) { setPassword(e.target.value) } ]}
             />
 
             <AuthInput 

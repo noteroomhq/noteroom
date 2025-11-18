@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import AuthInput from './AuthInput'
 import { checkPasswordCriteria, PasswordSchema } from '../utils';
-import z, { treeifyError } from 'zod';
+import { treeifyError } from 'zod';
 
 type TPasswordCriteria = { minLength: boolean, upperCase: boolean, lowerCase: boolean, number: boolean }
 
-export default function StrictPasswordInput({ password: [password, setPassword], error }: { error: string | null, password: [string, React.Dispatch<React.SetStateAction<string>>] }) {
+export default function StrictPasswordInput({ password: [password, onPasswordChange] }: { password: [string, (e: React.ChangeEvent<HTMLInputElement>) => void ] }) {
     const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false)
     const [fieldError, setFieldError] = useState<string | null>(null)
     const [passwordCriteria, setPasswordCriteria] = useState<TPasswordCriteria>({
@@ -19,12 +19,9 @@ export default function StrictPasswordInput({ password: [password, setPassword],
         setIsPasswordFocused(true)
     }
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setPassword(e.target.value)
-    }
-
     useEffect(() => {
 		setPasswordCriteria(checkPasswordCriteria(password))
+        
         if (isPasswordFocused) {
             const parsedPassword = PasswordSchema.safeParse(password)
             if (!parsedPassword.success) {
@@ -43,14 +40,13 @@ export default function StrictPasswordInput({ password: [password, setPassword],
                     label='Password'
                     type='password'
                     value={password}
-                    onChange={handleChange}
+                    onChange={onPasswordChange}
                     onFocus={handleFocus}
                     required
                     errorMessage={fieldError || undefined}
+                    placeholder='Enter your password'
                 />
             </div>
-
-            {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
 
             {isPasswordFocused && (
                 <div className="mt-2 text-sm">

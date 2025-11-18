@@ -1,8 +1,9 @@
 import React from 'react'
 import OTPInput from '../OTPInput'
 import AuthButton from '../AuthBtn'
+import type { StateController } from '@stypes/global'
 
-export default function OTPStage({ otpValue: [otpValue, setOtpValue], error: [apiError, otpError], isLoading, handleOTPSubmit }: { handleOTPSubmit: (e: React.FormEvent) => void, otpValue: [string[], React.Dispatch<React.SetStateAction<string[]>>], isLoading: boolean, error: [string | null, string | null ]}) {
+export default function OTPStage({ otpValue: [otpValue, setOtpValue], error: [apiError, otpError], isLoading, handleOTPSubmit }: { handleOTPSubmit: (e: React.FormEvent) => void, otpValue: StateController<string[]>, isLoading: boolean, error: [string | null, string | null ]}) {
     return (
         <form
             onSubmit={handleOTPSubmit}
