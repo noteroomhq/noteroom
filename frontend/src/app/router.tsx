@@ -3,6 +3,7 @@ import {Signup, Login, ForgotPassword} from "../features/auth/components/index";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import FloatingElementsProvider from "../contexts/FloatingElementsContext";
+import PostView from "../features/post-view/components";
 
 export default function AppRouters() {
     return (
@@ -14,6 +15,7 @@ export default function AppRouters() {
                     </FloatingElementsProvider>
                 }>
                     <Route path="/" element={<Feed />} />
+                    <Route path="/post" element={<PostView />} />
                 </Route>
 
                 <Route path="/signup" element={ <Signup /> }></Route>
