@@ -34,9 +34,9 @@ export default function PostSection({ onClick }: { onClick: React.MouseEventHand
 		<div className='flex flex-col w-full items-center'>
 			<div className="post-section
 				mt-5 rounded-[13px] border border-gray-300 
-				w-[95%] gap-2 p-2
+				w-full gap-2 p-2
 				flex flex-col 
-				md:w-full md:p-0
+				md:p-0
 				min-[2000px]:gap-3
 			" onClick={onClick}>
 

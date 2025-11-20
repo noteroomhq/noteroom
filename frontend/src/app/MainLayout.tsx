@@ -48,8 +48,7 @@ function HolderMiddleSection({ children }: { children: React.ReactNode[] }) {
 	return (
 		<div className="holder-middle-section
 			flex flex-col items-center justify-self-center w-full
-			md:w-[70%]
-			min-[2000px]:w-[65%]
+			md:w-[60%]
 		">
 			{children}
 		</div>
@@ -58,9 +57,9 @@ function HolderMiddleSection({ children }: { children: React.ReactNode[] }) {
 function SecondaryMiddleSection({ children }: { children: React.ReactNode | React.ReactNode[] }) {
 	return (
 		<div className="secondary-middle-section left-panel
-			w-full h-[90vh] overflow-y-scroll
+			w-[95%] h-[90vh] overflow-y-scroll
 			flex flex-col items-center justify-self-end
-			md:w-[90%]
+			md:w-full
 		">
 			{children}
 		</div>

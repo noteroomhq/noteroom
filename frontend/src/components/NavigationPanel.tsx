@@ -36,7 +36,7 @@ export default function NavigationPanel({ sidebar, hamBurgerMenuRef }: { sidebar
 			border-gray-300 border-b-2
 			w-full h-[10vh]
 			flex flex-row justify-between gap-3 justify-self-end items-center
-			md:w-[90%] md:mt-2
+			md:mt-2
 		">
 
 			<GlobalSearchBar />
