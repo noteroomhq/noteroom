@@ -77,7 +77,7 @@ export default function PostView() {
     ])
 
     return (
-        <div className='post-view flex flex-col gap-10 w-[95%] md:w-full'>
+        <div className='post-view flex flex-col gap-10'>
             <PostSection />
             <AddCommentSection />
             <CommentSection comments={comments} />
