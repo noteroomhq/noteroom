@@ -8,6 +8,7 @@ export default defineConfig({
 		alias: {
 			"@components": path.resolve(__dirname, "src/components"),
 			"@stypes": path.resolve(__dirname, "src/types"),
+			"@images": path.resolve(__dirname, "src/assets/images"),
 			"@shared-types": path.resolve(__dirname, "../types"),
 		}
 	},

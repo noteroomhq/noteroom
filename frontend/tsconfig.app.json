@@ -29,6 +29,7 @@
     "paths": {
       "@shared-types/*": ["../types/*"],
       "@components/*": ["./src/components/*"],
+      "@images/*": ["./src/assets/images/*"],
       "@stypes/*": ["./src/types/*"]
     }
   },
