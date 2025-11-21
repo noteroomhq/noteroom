@@ -1,9 +1,12 @@
+import GlobalWindowDataProvider from "../contexts/GlobalWindowData";
 import AppRouters from "./router";
 
 export default function App() {
     return (
         <>
-            <AppRouters />
+            <GlobalWindowDataProvider>
+                <AppRouters />
+            </GlobalWindowDataProvider>
         </>
     )
 }

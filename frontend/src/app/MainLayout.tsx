@@ -113,9 +113,7 @@ export default function MainLayout() {
 			{ openFloatingElement && 
 				<FloatingElements>
 					{ openPostContainer && 
-						<PostSectionProvider>
-							<PostContainer setOpen={setOpenPostContainer} />
-						</PostSectionProvider> 
+						<PostContainer setOpen={setOpenPostContainer} /> 
 					}
 				</FloatingElements> 
 			}
