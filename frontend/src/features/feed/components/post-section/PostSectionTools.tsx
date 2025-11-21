@@ -48,7 +48,7 @@ export default function PostSectionTools({ extendedClass, inAction = false, acti
 				flex items-end
 			">
 				<div className="tool flex items-center justify-center">
-					<button className='w-20 h-[35px] min-[2000px]:w-[90px] min-[2000px]:h-10 text-white border-none outline-transparent font-bold bg-[#42ACDE] rounded-full text-base min-[2000px]:text-[18px]'>Post</button>
+					<button className='w-20 h-[35px] hidden md:block min-[2000px]:w-[90px] min-[2000px]:h-10 text-white border-none outline-transparent font-bold bg-[#42ACDE] rounded-full text-base min-[2000px]:text-[18px]'>Post</button>
 				</div>
 			</div>
 		</div>
