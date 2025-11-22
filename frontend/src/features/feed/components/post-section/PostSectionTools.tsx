@@ -1,4 +1,5 @@
 import React from "react"
+import PostButton from "./PostButton"
 
 function PostSectionTool({ label, children, inAction, onClick }: { label: string, children: React.ReactElement<any>, inAction?: boolean, onClick?: React.MouseEventHandler }) {
 	return (
@@ -45,10 +46,10 @@ export default function PostSectionTools({ extendedClass, inAction = false, acti
 			</div>
 
 			<div className="tools-right
-				flex items-end
+				hidden md:flex items-end 
 			">
 				<div className="tool flex items-center justify-center">
-					<button className='w-20 h-[35px] hidden md:block min-[2000px]:w-[90px] min-[2000px]:h-10 text-white border-none outline-transparent font-bold bg-[#42ACDE] rounded-full text-base min-[2000px]:text-[18px]'>Post</button>
+					<PostButton onClick={() => inAction && console.log(`upload-post`)} />
 				</div>
 			</div>
 		</div>
