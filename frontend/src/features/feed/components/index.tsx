@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PostSection from "./post-section/PostSection";
 import FeedSection from "./feed-section/FeedSection";
 import { useFloatingElementContext } from "../../../contexts/FloatingElementsContext";
 import { useNavigate } from "react-router-dom";
-import { useGlobalWindowDataContext } from "../../../contexts/GlobalWindowData";
+import useWindowSize from "@hooks/useWindowSize";
 
 export default function Feed() {
     const navigate = useNavigate()
-    const { windowSize: { width: windowWidth } } = useGlobalWindowDataContext()!
+    const { width: windowWidth } = useWindowSize()
 
     const { 
 		floatingOverlay: [, setOpenFloatingElement], 
