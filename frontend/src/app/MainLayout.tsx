@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef } from "react"
 import LeftPanel from "../components/LeftPanel"
 import NavigationPanel from "../components/NavigationPanel"
 import RightPanel from "../components/RightPanel"
 import FloatingElements from "../components/FloatingElements"
 import { Outlet } from "react-router-dom"
 import PostContainer from "../features/feed/components/post-section/PostContainer"
-import PostSectionProvider from "../features/feed/components/contexts/PostSectionContext"
 import { useFloatingElementContext } from "../contexts/FloatingElementsContext"
+import NavigationPanelProvider from "../contexts/NavigationPanelContext"
+import { useGlobalLayoutContext } from "@contexts/GlobalLayoutContext"
+import Backdrop from "@components/Backdrop"
 
 
 function MainContainer({ children }: { children: React.ReactNode | React.ReactNode[] }) {
@@ -44,7 +46,7 @@ function PrimaryMiddleSection({ children }: { children: React.ReactNode[] }) {
 		</div>
 	)
 }
-function HolderMiddleSection({ children }: { children: React.ReactNode[] }) {
+function HolderMiddleSection({ children }: { children: React.ReactNode | React.ReactNode[] }) {
 	return (
 		<div className="holder-middle-section
 			flex flex-col items-center justify-self-center w-full
@@ -67,9 +69,7 @@ function SecondaryMiddleSection({ children }: { children: React.ReactNode | Reac
 }
 
 export default function MainLayout() {
-	const [openSidebar, setOpenSidebar] = useState<boolean>(false)
-	const sidebarRef = useRef<HTMLDivElement | null>(null)
-	const hamBurgerMenuRef = useRef<HTMLDivElement | null>(null)
+	const { sideBar: [openSidebar, setOpenSidebar] } = useGlobalLayoutContext()!
 
 	const FloatingElementsData = useFloatingElementContext()!
 	const { 
@@ -79,32 +79,24 @@ export default function MainLayout() {
 		} 
 	} = FloatingElementsData
 
-	useEffect(() => {
-		const refs = [sidebarRef, hamBurgerMenuRef]
-		function handleClick(e: MouseEvent) {
-			if (!openSidebar) return;
-			if (refs.some(ref => ref.current?.contains(e.target as Node))) return;
-			setOpenSidebar(false)
-		}
-
-		document.addEventListener("click", handleClick);
-		return () => document.removeEventListener("click", handleClick)
-	}, [sidebarRef, hamBurgerMenuRef, openSidebar])
-
 
 	return (
 		<UILayer>
 			<MainContainer>
-				<LeftPanel open={openSidebar} ref={sidebarRef} />
+				<LeftPanel open={openSidebar} />
+
+				{openSidebar && <Backdrop zIndex={30} onClick={() => setOpenSidebar(false)} /> }
 
 				<PrimaryMiddleSection>
-					<HolderMiddleSection>
-						<NavigationPanel hamBurgerMenuRef={hamBurgerMenuRef} sidebar={[openSidebar, setOpenSidebar]} />
+					<NavigationPanelProvider>
+						<HolderMiddleSection>
+							<NavigationPanel />
 
-						<SecondaryMiddleSection>
-							<Outlet />
-						</SecondaryMiddleSection>
-					</HolderMiddleSection>
+							<SecondaryMiddleSection>
+								<Outlet />
+							</SecondaryMiddleSection>
+						</HolderMiddleSection>
+					</NavigationPanelProvider>
 
 					<RightPanel />
 				</PrimaryMiddleSection>
@@ -112,9 +104,7 @@ export default function MainLayout() {
 
 			{ openFloatingElement && 
 				<FloatingElements>
-					{ openPostContainer && 
-						<PostContainer setOpen={setOpenPostContainer} /> 
-					}
+					{ openPostContainer && <PostContainer setOpen={setOpenPostContainer} /> }
 				</FloatingElements> 
 			}
 		</UILayer>

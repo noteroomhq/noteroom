@@ -5,6 +5,7 @@ import MainLayout from "./MainLayout";
 import FloatingElementsProvider from "../contexts/FloatingElementsContext";
 import PostView from "../features/post-view/components";
 import MobilePostSection from "../features/feed/components/post-section/MobilePostSection";
+import GlobalLayoutProvider from "@contexts/GlobalLayoutContext";
 
 export default function AppRouters() {
     return (
@@ -12,7 +13,9 @@ export default function AppRouters() {
             <Routes>
                 <Route element={
                     <FloatingElementsProvider>
-                        <MainLayout />
+                        <GlobalLayoutProvider>
+                            <MainLayout />
+                        </GlobalLayoutProvider>
                     </FloatingElementsProvider>
                 }>
                     <Route path="/" element={<Feed />} />
