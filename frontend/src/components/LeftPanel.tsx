@@ -420,7 +420,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 				</div>
 			</div>
 
-			<div className="toggle-sidebar
+			{/*<div className="toggle-sidebar
 				hidden items-center justify-center 
 				absolute top-[15%] left-full 
 				-translate-x-1/2 -translate-y-1/2 w-8 h-8 
@@ -431,7 +431,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M9.33203 17.333L1.33203 9.33301L9.33203 1.33301" stroke="#5F5E5B" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
-			</div>
+			</div>*/}
 		</div>
 	);
 }
