@@ -1,12 +1,16 @@
 import PostInteraction from "@components/PostInteraction";
+import { useNavigate } from "react-router-dom";
 
 export default function FeedMediaPost({ withMedia = true, isLast }: { withMedia: boolean, isLast: boolean }) {
+	const navigate = useNavigate()
+
 	return (
 		<div className={`media-post
 			${isLast && 'mb-10'}
 			w-full
 			flex
-		`}>
+			cursor-pointer
+		`} onClick={() => navigate("/post")}>
 			<div className="left-side hidden md:block w-auto mr-[5px]">
 				<div className={`author-profile-pic justify-self-start w-10 h-10 overflow-hidden rounded-[50%]`}>
                     <img 
