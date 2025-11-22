@@ -53,7 +53,7 @@ LeftPanelNavigationItem.button = ({ label, children }: { label: string, children
 	)
 }
 
-export default function LeftPanel({ open = false, ref }: { open: boolean, ref: React.RefObject<HTMLDivElement | null> }) {
+export default function LeftPanel({ open = false }: { open: boolean }) {
 	type ToggleableItem = 'home' | 'popular' | 'friends' | 'groups';
 	const [activeItem, __setActiveItem] = useState<ToggleableItem | null>(null);
 
@@ -65,11 +65,11 @@ export default function LeftPanel({ open = false, ref }: { open: boolean, ref: R
 		<div className={`left-panel 
 			bg-(--leftpanel-maincontainer-clr) 
 			overflow-visible border-gray-300 border-r-2
-			absolute w-[65%] z-100 h-[90vh] bottom-0
+			absolute w-[65%] z-50 h-[90vh] bottom-0
 			transition-transform duration-300
 			transform ${open ? 'translate-x-0' : '-translate-x-full'}
 			md:static md:flex md:flex-col md:items-start md:w-full md:translate-x-0 md:border-r-0 md:h-screen md:z-0
-		`} ref={ref}>
+		`}>
 			<div className="leftpanel-container overflow-y-auto w-[90%] h-full flex flex-col gap-5 items-center">
 				<div className="logo-container hidden w-[95%] md:flex justify-start pl-[2vh]">
 					<svg

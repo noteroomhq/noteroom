@@ -1,39 +1,100 @@
-import type { StateController } from "@stypes/global";
 import GlobalSearchBar from "./GlobalSearchBar";
-import InteractionsTools from "./InteractionTools";
+import { useNavigationPanelContext } from "../contexts/NavigationPanelContext";
+import HamburgerMenuButton from "./HamburgerMenuButton";
 import NoteRoomLogo from "@images/noteroom_logo.png"
+import { useGlobalLayoutContext } from "@contexts/GlobalLayoutContext";
+import React from "react";
 
 
-function MobileLeft({ hamBurgerMenuRef, sidebar: [openSidebar, setOpenSidebar] }: { sidebar: StateController<boolean>, hamBurgerMenuRef: React.RefObject<HTMLDivElement | null> }) {
+function DefaultMobileLeft() {
+	const { sideBar: [, setOpenSidebar] } = useGlobalLayoutContext()!
+
 	return (
-		<div className="mobile-left
-			w-[75%] h-[70%] 
-			flex flex-row items-center gap-1
-			md:hidden
-		">
-			<div className="hamburger-menu flex flex-row justify-center items-center" onClick={() => setOpenSidebar(!openSidebar)} ref={hamBurgerMenuRef}>
-				<svg className="h-6 w-6" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M1 7H19M1 1H19M1 13H19" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-				</svg>
-			</div>
+		<>
+			<HamburgerMenuButton onClick={() => setOpenSidebar(prev => !prev) } />
 			<div className="app-logo w-12 h-12 overflow-hidden flex flex-row justify-start items-center">
 				<img src={NoteRoomLogo} className="h-full w-full object-cover" />
 			</div>
+		</>
+	)
+}
+
+function InteractionTool({ name, children, extendedClass }: { name: string, children: React.ReactElement<any>, extendedClass?: string }) {
+	const clonedIcon = React.cloneElement(children, {
+		className: `md:h-[20px] md:w-[20px] h-[25px] w-[25px]`
+	})
+
+	return (
+		<div className={`${name} md:border-gray-300 flex justify-center items-center md:border h-10 w-10 rounded-full hover:bg-gray-100 ${extendedClass}`}>
+			{clonedIcon}
 		</div>
 	)
 }
 
-export default function NavigationPanel({ sidebar, hamBurgerMenuRef }: { sidebar: StateController<boolean>, hamBurgerMenuRef: React.RefObject<HTMLDivElement | null> }) {
+function DefaultInteractionTools() {
+    return (
+        <div className="interactions-tools
+			flex flex-row items-center justify-around gap-1
+			md:p-0 md:gap-3 md:w-[25%] md:justify-between
+			min-[2000px]:w-[10%]
+		">
+            <InteractionTool name='notification'>
+                <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.8369 1.83398L10.8369 1.14648H10.8369V1.83398ZM18.0117 13.6455H18.6992V13.6455L18.0117 13.6455ZM15.5068 16.5771L15.6013 17.2581L15.6013 17.2581L15.5068 16.5771ZM10.8379 16.9795V17.667H10.8379L10.8379 16.9795ZM6.16895 16.5771L6.07448 17.2581L6.07452 17.2581L6.16895 16.5771ZM3.66406 13.6455L2.97656 13.6455V13.6455H3.66406ZM4.09126 12.0898L3.5007 11.7378L4.09126 12.0898ZM10.8369 1.83398L10.8369 2.52148C13.5388 2.5215 15.7295 4.71219 15.7295 7.41406H16.417H17.1045C17.1045 3.95279 14.2982 1.14651 10.8369 1.14648L10.8369 1.83398ZM16.417 7.41406H15.7295V9.33156H16.417H17.1045V7.41406H16.417ZM17.584 12.0891L16.9936 12.4413C17.2034 12.7931 17.3242 13.2042 17.3242 13.6455L18.0117 13.6455L18.6992 13.6455C18.6992 12.9493 18.5078 12.2958 18.1745 11.7369L17.584 12.0891ZM18.0117 13.6455H17.3242C17.3242 14.7877 16.5119 15.7436 15.4123 15.8962L15.5068 16.5771L15.6013 17.2581C17.4122 17.0068 18.6992 15.4418 18.6992 13.6455H18.0117ZM15.5068 16.5771L15.4124 15.8962C13.9726 16.0958 12.2055 16.292 10.8379 16.292L10.8379 16.9795L10.8379 17.667C12.3053 17.667 14.1505 17.4593 15.6013 17.2581L15.5068 16.5771ZM10.8379 16.9795V16.292C9.4703 16.292 7.70322 16.0958 6.26337 15.8962L6.16895 16.5771L6.07452 17.2581C7.52526 17.4593 9.3705 17.667 10.8379 17.667V16.9795ZM6.16895 16.5771L6.26341 15.8962C5.16382 15.7436 4.35156 14.7878 4.35156 13.6455H3.66406H2.97656C2.97656 15.4418 4.26343 17.0069 6.07448 17.2581L6.16895 16.5771ZM3.66406 13.6455L4.35156 13.6455C4.35159 13.2044 4.4722 12.7935 4.68182 12.4418L4.09126 12.0898L3.5007 11.7378C3.1677 12.2966 2.9766 12.9497 2.97656 13.6455L3.66406 13.6455ZM5.25684 9.33379H5.94434V7.41406H5.25684H4.56934V9.33379H5.25684ZM5.25684 7.41406H5.94434C5.94434 4.71217 8.13502 2.52148 10.8369 2.52148V1.83398V1.14648C7.37563 1.14648 4.56934 3.95278 4.56934 7.41406H5.25684ZM4.09126 12.0898L4.68182 12.4418C4.91507 12.0505 5.24093 11.5568 5.48279 11.072C5.73367 10.5692 5.94434 9.98693 5.94434 9.33379H5.25684H4.56934C4.56934 9.68882 4.45529 10.0516 4.25242 10.4582C4.04054 10.8829 3.78361 11.2632 3.5007 11.7378L4.09126 12.0898ZM16.417 9.33156H15.7295C15.7295 9.98513 15.9404 10.5677 16.1916 11.0708C16.4338 11.5559 16.76 12.0497 16.9936 12.4413L17.584 12.0891L18.1745 11.7369C17.8912 11.262 17.6339 10.8815 17.4218 10.4566C17.2187 10.0498 17.1045 9.68683 17.1045 9.33156H16.417Z" fill="black" />
+                    <path d="M12.832 19.0986C12.4036 19.743 11.671 20.1676 10.8393 20.1676C10.0075 20.1676 9.27494 19.743 8.84653 19.0986" stroke="black" stroke-width="1.375" stroke-linecap="round" />
+                </svg>
+            </InteractionTool>
+
+            <InteractionTool name='chats'>
+                <svg viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.95605 16.0371L2.34215 16.5202L2.34236 16.52L1.95605 16.0371ZM0.617188 15.3936L-0.00120637 15.3936L-0.00120619 15.3939L0.617188 15.3936ZM4.73926 0.618164L4.73926 -0.000229717L4.73923 -0.000229716L4.73926 0.618164ZM12.9844 0.618164V1.23656C14.9197 1.23656 16.489 2.80588 16.489 4.74121H17.1074H17.7258C17.7258 2.12282 15.6028 -0.000229716 12.9844 -0.000229716V0.618164ZM17.1074 4.74121H16.489V9.6875H17.1074H17.7258V4.74121H17.1074ZM17.1074 9.6875H16.489C16.489 11.6228 14.9197 13.1922 12.9844 13.1922V13.8105V14.4289C15.6028 14.4289 17.7258 12.3059 17.7258 9.6875H17.1074ZM12.9844 13.8105V13.1922H5.31771V13.8105V14.4289H12.9844V13.8105ZM4.28756 14.1719L3.90125 13.689L1.56975 15.5542L1.95605 16.0371L2.34236 16.52L4.67387 14.6548L4.28756 14.1719ZM1.95605 16.0371L1.56996 15.5541C1.43521 15.6618 1.23567 15.5661 1.23558 15.3932L0.617188 15.3936L-0.00120619 15.3939C-0.000566058 16.6029 1.39742 17.2753 2.34215 16.5202L1.95605 16.0371ZM0.617188 15.3936H1.23558V4.74121H0.617188H-0.00120628V15.3936H0.617188ZM0.617188 4.74121H1.23558C1.23558 2.80578 2.80418 1.23665 4.73929 1.23656L4.73926 0.618164L4.73923 -0.000229716C2.12078 -0.000110946 -0.00120628 2.12305 -0.00120628 4.74121H0.617188ZM4.73926 0.618164V1.23656H12.9844V0.618164V-0.000229716H4.73926V0.618164ZM5.31771 13.8105V13.1922C4.80284 13.1922 4.3033 13.3674 3.90125 13.689L4.28756 14.1719L4.67387 14.6548C4.85662 14.5086 5.08368 14.4289 5.31771 14.4289V13.8105Z" fill="black" />
+                    <circle cx="4.78066" cy="7.25527" r="1.03066" fill="black" />
+                    <circle cx="8.90566" cy="7.25527" r="1.03066" fill="black" />
+                    <circle cx="13.0268" cy="7.25527" r="1.03066" fill="black" />
+                </svg>
+            </InteractionTool>
+
+            <InteractionTool name='chats' extendedClass='block md:hidden'>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#1E1E1E" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </InteractionTool>
+
+            <div className="justify-self-start h-10 w-10 overflow-hidden rounded-[50%]">
+                <img 
+                    src="https://placehold.co/600x400/yellow/black?text=A" 
+                    className='w-full h-full object-cover'
+                    alt="user"
+                />
+            </div>
+        </div>
+    )
+}
+
+
+export default function NavigationPanel() {
+    const { navElements: [navElements] } = useNavigationPanelContext()!
+
 	return (
 		<div className="navigation-panel
+			bg-(--primary-secondary-rightpanel-clr)
+			relative z-40
 			border-gray-300 border-b-2 p-2
 			w-full h-[10vh]
 			flex flex-row justify-between gap-3 justify-self-end items-center
 			md:mt-2 md:p-0
 		">
 			<GlobalSearchBar />
-			<MobileLeft hamBurgerMenuRef={hamBurgerMenuRef} sidebar={sidebar} />
-			<InteractionsTools />
+
+			<div className="mobile-left
+				w-[75%] h-[70%] 
+				flex flex-row items-center gap-2
+				md:hidden
+			">
+				{ navElements.mobileLeft || <DefaultMobileLeft /> }
+			</div>
+
+			{ navElements.right || <DefaultInteractionTools /> }
 		</div>
 	)
 }
