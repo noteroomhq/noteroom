@@ -1,10 +1,14 @@
-import React from 'react'
+import BackButton from '@components/BackButton'
 import FeedMediaPost from '../../feed/components/feed-section/FeedMediaPost'
+import { useNavigate } from 'react-router-dom'
 
 export default function PostSection() {
-    return (
-        <div className='mt-5'>
-            <FeedMediaPost isLast={false} withMedia={true} />
-        </div>
-    )
+	const navigate = useNavigate()
+
+	return (
+		<div className='mt-5 relative'>
+			<BackButton className='hidden md:block fixed left-[25%]' onClick={() => navigate(-1)} />
+			<FeedMediaPost isLast={false} withMedia={true} />
+		</div>
+	)
 }
