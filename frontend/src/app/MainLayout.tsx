@@ -13,7 +13,7 @@ import Backdrop from "@components/Backdrop"
 
 function MainContainer({ children }: { children: React.ReactNode | React.ReactNode[] }) {
     return (
-        <div className="main-container 
+        <div className="main-container
             relative
             bg-(--leftpanel-maincontainer-clr)
             h-screen overflow-hidden w-full
@@ -40,7 +40,7 @@ function PrimaryMiddleSection({ children }: { children: React.ReactNode[] }) {
 			bg-(--primary-secondary-rightpanel-clr)
 			h-full w-full 
 			grid grid-cols-1
-			md:h-[99.5%] md:w-[99.5%] md:self-end md:grid-cols-[4fr_1fr] md:rounded-[50px_0_0_0] 
+			md:h-[98.5%] md:w-[99.5%] md:self-end md:grid-cols-[4fr_1fr] md:rounded-[50px_0_0_0] 
 		">
 			{children}
 		</div>

@@ -71,7 +71,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 			md:static md:flex md:flex-col md:items-start md:w-full md:translate-x-0 md:border-r-0 md:h-screen md:z-0
 		`}>
 			<div className="leftpanel-container overflow-y-auto w-[90%] h-full flex flex-col gap-5 items-center">
-				<div className="logo-container hidden w-[95%] md:flex justify-start pl-[2vh]">
+				<div className="logo-container hidden w-[90%] md:flex justify-start pl-[2vh]">
 					<svg
 						width="122"
 						height="72"
