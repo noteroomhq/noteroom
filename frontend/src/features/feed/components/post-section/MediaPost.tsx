@@ -4,7 +4,7 @@ import { usePostSectionContext } from "../contexts/PostSectionContext"
 function MediaPostImage({ image, isActive, children }: { image: TMediaPost, isActive: boolean, children: React.ReactNode[] }) {
 	return (
 		<div className={`img 
-			w-full min-h-[260px] min-[2000px]:min-h-[300px] 
+			w-full min-h-[260px] desktop:min-h-[300px] 
 			relative 
 			overflow-hidden ${!isActive && 'hidden'}
 		`} key={image.id}>
@@ -28,7 +28,7 @@ export default function MediaPost({ extendedClass, addMedia }: { extendedClass: 
 			flex flex-col 
 		`}>
 			<div className="image-container 
-				w-full min-h-[260px] min-[2000px]:min-h-[300px]
+				w-full min-h-[260px] desktop:min-h-[300px]
 			">
 				{ media.map((m, index) => {
 					return (

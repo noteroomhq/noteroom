@@ -5,9 +5,9 @@ function PostSectionTool({ label, children, inAction, onClick }: { label: string
 	return (
 		<div className={`tool gap-0.5 w-full flex items-center p-[5px] cursor-pointer rounded-[10px] ${inAction && 'hover:bg-gray-200'}`} onClick={onClick}>
 			{React.cloneElement(children, {
-				className: 'h-[20px] w-[20px] min-[2000px]:h-[28px] min-[2000px]:w-[28px]'
+				className: 'h-[20px] w-[20px] desktop:h-[28px] desktop:w-[28px]'
 			})}
-			<span className='text-[14px] min-[2000px]:text-[18px]'>{label}</span>
+			<span className='text-[14px] desktop:text-[18px]'>{label}</span>
 		</div>
 	)
 }

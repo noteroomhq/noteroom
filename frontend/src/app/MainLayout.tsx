@@ -19,7 +19,7 @@ function MainContainer({ children }: { children: React.ReactNode | React.ReactNo
             h-screen overflow-hidden w-full
             grid grid-cols-1
             xl:grid-cols-[1.2fr_6fr]
-            min-[2000px]:grid-cols-[0.9fr_5fr]
+            desktop:grid-cols-[0.9fr_5fr]
         ">
             { children }
         </div>

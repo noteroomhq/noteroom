@@ -428,7 +428,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 				absolute top-[15%] left-full
 				-translate-x-1/2 -translate-y-1/2 w-8 h-8
 				xl:flex
-				min-[2000px]:top-[10.5%]
+				desktop:top-[10.5%]
 				bg-white shadow-md rounded-md
 			">
 				<svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -37,7 +37,7 @@ export default function PollPost({ extendedClass }: { extendedClass: string }) {
 			${extendedClass}
 			flex flex-col p-3 border border-gray-300 rounded-[20px] gap-1 w-full
 		`}>
-			<div className="options-container flex flex-col min-h-[120px] max-h-[270px] min-[2000px]:max-h-[300px] gap-1 overflow-y-auto">
+			<div className="options-container flex flex-col min-h-[120px] max-h-[270px] desktop:max-h-[300px] gap-1 overflow-y-auto">
 				{ polls.map((poll, i) => {
 					return <PollPostOption poll={poll} loopIndex={i} isLast={i === polls.length - 1} isDeleteable={polls.length > 2} />
 				}) }

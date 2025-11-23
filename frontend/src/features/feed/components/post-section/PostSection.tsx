@@ -21,7 +21,7 @@ function PostSectionIntro() {
 			</div>
 
 			<div className="intro-text flex items-center justify-start h-full w-full xl:w-[90%]">
-				<span className="font-['Space_Grotesk'] text-[16px] xl:text-[15px] min-[2000px]:text-[20px] text-[rgba(0,0,0,0.7)]">What are you working on?</span>
+				<span className="font-['Space_Grotesk'] text-[16px] xl:text-[15px] desktop:text-[20px] text-[rgba(0,0,0,0.7)]">What are you working on?</span>
 			</div>
 
 			<div className="tools-section flex justify-center items-center xl:hidden ">
@@ -41,7 +41,7 @@ export default function PostSection({ onClick }: { onClick: React.MouseEventHand
 				w-full gap-2 p-2
 				flex flex-col
 				xl:p-0
-				min-[2000px]:gap-3
+				desktop:gap-3
 			" onClick={onClick}>
 
 				<PostSectionIntro />

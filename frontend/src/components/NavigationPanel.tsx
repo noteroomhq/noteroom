@@ -36,7 +36,7 @@ function DefaultInteractionTools() {
         <div className="interactions-tools
 			flex flex-row items-center justify-around gap-1
 			xl:p-0 xl:gap-3 xl:w-[25%] xl:justify-between
-			min-[2000px]:w-[10%]
+			desktop:w-[10%]
 		">
             <InteractionTool name='notification'>
                 <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">

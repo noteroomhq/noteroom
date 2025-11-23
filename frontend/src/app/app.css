@@ -4,11 +4,15 @@
 
 @tailwind utilities;
 
+@theme {
+	--breakpoint-desktop: 1900px;
+}
+
 :root {
   --blue-shade-l: #42ACDE;
   --blue-shade-d: #3F8FB5;
   --leftpanel-maincontainer-clr: #f4f4f2;
-	--primary-secondary-rightpanel-clr: #ffffff;
+  --primary-secondary-rightpanel-clr: #ffffff;
 }
 
 body {

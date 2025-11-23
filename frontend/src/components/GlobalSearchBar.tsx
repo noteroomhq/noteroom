@@ -1,11 +1,11 @@
 export default function GlobalSearchBar() {
 	return (
-		<div className="hidden xl:block w-[75%] min-[2000px]:w-[90%] h-auto">
+		<div className="hidden xl:block w-[75%] desktop:w-[90%] h-auto">
 			<div className="search-bar
 				h-12 w-full
 				flex flex-row items-center 
 				border border-gray-300 rounded-full
-				min-[2000px]:h-13
+				desktop:h-13
 			">
 				<div className="search-icon w-[10%] h-full flex justify-center items-center">
 					<svg className='h-[25px] w-[25px]' viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@ export default function GlobalSearchBar() {
 					</svg>
 				</div>
 				<div className="search-input w-[90%] h-full">
-					<input type="text" placeholder='Search NoteRoom' className='w-full h-full bg-transparent border-none outline-none text-base min-[2000px]:text-[18px]' />
+					<input type="text" placeholder='Search NoteRoom' className='w-full h-full bg-transparent border-none outline-none text-base desktop:text-[18px]' />
 				</div>
 			</div>
 		</div>
