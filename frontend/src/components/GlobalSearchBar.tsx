@@ -1,6 +1,6 @@
 export default function GlobalSearchBar() {
 	return (
-		<div className="hidden md:block w-[75%] min-[2000px]:w-[90%] h-auto">
+		<div className="hidden xl:block w-[75%] min-[2000px]:w-[90%] h-auto">
 			<div className="search-bar
 				h-12 w-full
 				flex flex-row items-center 

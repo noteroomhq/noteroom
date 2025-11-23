@@ -6,8 +6,8 @@ function LeftPanelNavigationItem({ label, children, extendedClass, onClick }: { 
 	})
 	return (
 		<div className={`item
-			w-[90%] 
-			flex gap-[15px] items-center 
+			w-[90%]
+			flex gap-[15px] items-center
 			rounded-[10px] cursor-pointer p-[10px_10px]
 			hover:bg-[#e9e9e9]
 			${extendedClass}
@@ -20,9 +20,9 @@ function LeftPanelNavigationItem({ label, children, extendedClass, onClick }: { 
 LeftPanelNavigationItem.dropdown = ({ label, children }: { label: string, children?: React.ReactElement<any> }) => {
 	return (
 		<div className="dropdown
-			w-[90%] 
+			w-[90%]
 			flex gap-[15px] items-center
-			p-[10px_10px] 
+			p-[10px_10px]
 		">
 			<span className='text-[13px] font-sans grow text-[rgba(0,0,0,0.5)]'>{ label }</span>
 			{ children && React.cloneElement(children, {
@@ -34,13 +34,13 @@ LeftPanelNavigationItem.dropdown = ({ label, children }: { label: string, childr
 LeftPanelNavigationItem.button = ({ label, children }: { label: string, children?: React.ReactElement<any> }) => {
 	return (
 		<div className="item
-			w-[90%] 
-			flex gap-[15px] items-center 
+			w-[90%]
+			flex gap-[15px] items-center
 			rounded-[10px] cursor-pointer p-[10px_10px]
 		">
 			<button className='button
-				bg-[#42acde] text-white 
-				outline-transparent border-none rounded-[20px] p-[1vh] 
+				bg-[#42acde] text-white
+				outline-transparent border-none rounded-[20px] p-[1vh]
 				w-full
 				flex justify-center items-center gap-[5px]
 			'>
@@ -62,16 +62,19 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 	}
 
 	return (
-		<div className={`left-panel 
-			bg-(--leftpanel-maincontainer-clr) 
+		<div className={`left-panel
+			bg-(--leftpanel-maincontainer-clr)
 			overflow-visible border-gray-300 border-r-2
 			absolute w-[65%] z-50 h-[90vh] bottom-0
 			transition-transform duration-300
 			transform ${open ? 'translate-x-0' : '-translate-x-full'}
-			md:static md:flex md:flex-col md:items-start md:w-full md:translate-x-0 md:border-r-0 md:h-screen md:z-0
+			sm:w-[35%]
+			md:w-[35%]
+			lg:w-[30%]
+			xl:static xl:flex xl:flex-col xl:items-start xl:w-full xl:translate-x-0 xl:border-r-0 xl:h-screen xl:z-0
 		`}>
 			<div className="leftpanel-container overflow-y-auto w-[90%] h-full flex flex-col gap-5 items-center">
-				<div className="logo-container hidden w-[90%] md:flex justify-start pl-[2vh]">
+				<div className="logo-container hidden w-[90%] xl:flex justify-start pl-[2vh]">
 					<svg
 						width="122"
 						height="72"
@@ -107,7 +110,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 						</defs>
 					</svg>
 				</div>
-				<div className="items-container mt-1 md:mt-0 w-[95%] flex flex-col items-center self-end gap-[1vh]">
+				<div className="items-container mt-1 xl:mt-0 w-[95%] flex flex-col items-center self-end gap-[1vh]">
 					<LeftPanelNavigationItem label='Home' onClick={() => setActiveItem('home')}>
 						<svg
 							viewBox="0 0 32 32"
@@ -241,7 +244,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 							</defs>
 						</svg>
 					</LeftPanelNavigationItem>
-					
+
 
 					<LeftPanelNavigationItem.dropdown label='Groups'>
 						<svg
@@ -355,7 +358,7 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 							/>
 						</svg>
 					</LeftPanelNavigationItem>
-					
+
 
 					<LeftPanelNavigationItem.dropdown label='Others' />
 					<LeftPanelNavigationItem label='Settings'>
@@ -421,10 +424,10 @@ export default function LeftPanel({ open = false }: { open: boolean }) {
 			</div>
 
 			{/*<div className="toggle-sidebar
-				hidden items-center justify-center 
-				absolute top-[15%] left-full 
-				-translate-x-1/2 -translate-y-1/2 w-8 h-8 
-				md:flex
+				hidden items-center justify-center
+				absolute top-[15%] left-full
+				-translate-x-1/2 -translate-y-1/2 w-8 h-8
+				xl:flex
 				min-[2000px]:top-[10.5%]
 				bg-white shadow-md rounded-md
 			">

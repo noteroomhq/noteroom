@@ -21,11 +21,11 @@ function DefaultMobileLeft() {
 
 function InteractionTool({ name, children, extendedClass }: { name: string, children: React.ReactElement<any>, extendedClass?: string }) {
 	const clonedIcon = React.cloneElement(children, {
-		className: `md:h-[20px] md:w-[20px] h-[25px] w-[25px]`
+		className: `xl:h-[20px] xl:w-[20px] h-[25px] w-[25px]`
 	})
 
 	return (
-		<div className={`${name} md:border-gray-300 flex justify-center items-center md:border h-10 w-10 rounded-full hover:bg-gray-100 ${extendedClass}`}>
+		<div className={`${name} xl:border-gray-300 flex justify-center items-center xl:border h-10 w-10 rounded-full hover:bg-gray-100 ${extendedClass}`}>
 			{clonedIcon}
 		</div>
 	)
@@ -35,7 +35,7 @@ function DefaultInteractionTools() {
     return (
         <div className="interactions-tools
 			flex flex-row items-center justify-around gap-1
-			md:p-0 md:gap-3 md:w-[25%] md:justify-between
+			xl:p-0 xl:gap-3 xl:w-[25%] xl:justify-between
 			min-[2000px]:w-[10%]
 		">
             <InteractionTool name='notification'>
@@ -54,7 +54,7 @@ function DefaultInteractionTools() {
                 </svg>
             </InteractionTool>
 
-            <InteractionTool name='chats' extendedClass='block md:hidden'>
+            <InteractionTool name='chats' extendedClass='block xl:hidden'>
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#1E1E1E" stroke-width="1.71429" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -82,14 +82,14 @@ export default function NavigationPanel() {
 			border-gray-300 border-b-2 p-2
 			w-full h-[10vh]
 			flex flex-row justify-between gap-3 justify-self-end items-center
-			md:mt-2 md:p-0
+			xl:mt-2 xl:p-0
 		">
 			<GlobalSearchBar />
 
 			<div className="mobile-left
 				w-[75%] h-[70%] 
 				flex flex-row items-center gap-2
-				md:hidden
+				xl:hidden
 			">
 				{ navElements.mobileLeft || <DefaultMobileLeft /> }
 			</div>

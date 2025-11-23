@@ -18,7 +18,7 @@ function MainContainer({ children }: { children: React.ReactNode | React.ReactNo
             bg-(--leftpanel-maincontainer-clr)
             h-screen overflow-hidden w-full
             grid grid-cols-1
-            md:grid-cols-[1.2fr_6fr]
+            xl:grid-cols-[1.2fr_6fr]
             min-[2000px]:grid-cols-[0.9fr_5fr]
         ">
             { children }
@@ -38,9 +38,9 @@ function PrimaryMiddleSection({ children }: { children: React.ReactNode[] }) {
 	return (
 		<div className="primary-middle-section
 			bg-(--primary-secondary-rightpanel-clr)
-			h-full w-full 
+			h-full w-full
 			grid grid-cols-1
-			md:h-[98.5%] md:w-[99.5%] md:self-end md:grid-cols-[4fr_1fr] md:rounded-[50px_0_0_0] 
+			xl:h-[98.5%] xl:w-[99.5%] xl:self-end xl:grid-cols-[4fr_1fr] xl:rounded-[50px_0_0_0]
 		">
 			{children}
 		</div>
@@ -50,7 +50,7 @@ function HolderMiddleSection({ children }: { children: React.ReactNode | React.R
 	return (
 		<div className="holder-middle-section
 			flex flex-col items-center justify-self-center w-full
-			md:w-[60%]
+			xl:w-[60%]
 		">
 			{children}
 		</div>
@@ -61,7 +61,10 @@ function SecondaryMiddleSection({ children }: { children: React.ReactNode | Reac
 		<div className="secondary-middle-section left-panel
 			w-[95%] h-[90vh] overflow-y-scroll
 			flex flex-col items-center justify-self-end
-			md:w-full
+			sm:w-[60%]
+			md:w-[60%]
+			lg:w-[50%]
+			xl:w-full
 		">
 			{children}
 		</div>
@@ -72,11 +75,11 @@ export default function MainLayout() {
 	const { sideBar: [openSidebar, setOpenSidebar] } = useGlobalLayoutContext()!
 
 	const FloatingElementsData = useFloatingElementContext()!
-	const { 
-		floatingOverlay: [openFloatingElement], 
-		overlayElements: { 
-			postContainer: [openPostContainer, setOpenPostContainer] 
-		} 
+	const {
+		floatingOverlay: [openFloatingElement],
+		overlayElements: {
+			postContainer: [openPostContainer, setOpenPostContainer]
+		}
 	} = FloatingElementsData
 
 
@@ -102,10 +105,10 @@ export default function MainLayout() {
 				</PrimaryMiddleSection>
 			</MainContainer>
 
-			{ openFloatingElement && 
+			{ openFloatingElement &&
 				<FloatingElements>
 					{ openPostContainer && <PostContainer setOpen={setOpenPostContainer} /> }
-				</FloatingElements> 
+				</FloatingElements>
 			}
 		</UILayer>
 	);

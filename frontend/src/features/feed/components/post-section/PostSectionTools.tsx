@@ -46,7 +46,7 @@ export default function PostSectionTools({ extendedClass, inAction = false, acti
 			</div>
 
 			<div className="tools-right
-				hidden md:flex items-end 
+				hidden xl:flex items-end 
 			">
 				<div className="tool flex items-center justify-center">
 					<PostButton onClick={() => inAction && console.log(`upload-post`)} />

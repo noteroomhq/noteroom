@@ -12,7 +12,7 @@ export default function MobilePostSection() {
     useEffect(() => {
         setNavElements({
             mobileLeft: (
-                <div className='flex gap-2 md:hidden'>
+                <div className='flex gap-2 xl:hidden'>
                     <BackButton onClick={() => navigate(-1)} />
                     <div className="action-title h-12 overflow-hidden flex flex-row justify-start items-center">
                         <span className="text-lg font-['Space_Grotesk']">Create Post</span>
@@ -20,7 +20,7 @@ export default function MobilePostSection() {
                 </div>
             ),
             right: (
-                <div className="tool flex items-center justify-center md:hidden">
+                <div className="tool flex items-center justify-center xl:hidden">
                     <PostButton onClick={() => console.log(`upload-post`)} />
                 </div>
             )

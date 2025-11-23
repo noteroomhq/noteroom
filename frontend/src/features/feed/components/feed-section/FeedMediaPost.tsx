@@ -11,7 +11,7 @@ export default function FeedMediaPost({ withMedia = true, isLast }: { withMedia:
 			flex
 			cursor-pointer
 		`} onClick={() => navigate("/post")}>
-			<div className="left-side hidden md:block w-auto mr-[5px]">
+			<div className="left-side hidden xl:block w-auto mr-[5px]">
 				<div className={`author-profile-pic justify-self-start w-10 h-10 overflow-hidden rounded-[50%]`}>
                     <img 
                         src="https://placehold.co/600x400/yellow/black?text=A" 
@@ -27,7 +27,7 @@ export default function FeedMediaPost({ withMedia = true, isLast }: { withMedia:
 				`}>
 					<div className="post-topbar w-full flex justify-between">
 						<div className="author-info flex items-center text-[14px] gap-2">
-							<div className={`author-profile-pic block md:hidden justify-self-start w-10 h-10 overflow-hidden rounded-[50%]`}>
+							<div className={`author-profile-pic block xl:hidden justify-self-start w-10 h-10 overflow-hidden rounded-[50%]`}>
 								<img 
 									src="https://placehold.co/600x400/yellow/black?text=A" 
 									className='w-full h-full object-cover'

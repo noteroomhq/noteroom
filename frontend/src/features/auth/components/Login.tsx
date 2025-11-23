@@ -100,7 +100,7 @@ const Login = () => {
 					src={NoteRoomLogo}
 					alt="NoteRoom Logo"
 					onClick={ ()=>{window.location.href="https://noteroom.co"} } 
-					className="h-16 w-auto mx-auto md:h-20 mb-4 absolute -top-25 -right-4 md:-right-10 xl:-top-30 2xl:-top-50 xl:-right-25 2xl:-right-40 cursor-pointer" 	
+					className="h-16 w-auto mx-auto xl:h-20 mb-4 absolute -top-25 -right-4 xl:-right-10 xl:-top-30 2xl:-top-50 xl:-right-25 2xl:-right-40 cursor-pointer" 	
 				/>
 				<h1 className="text-3xl font-bold mb-6 text-center">
 					Welcome Back to NoteRoom

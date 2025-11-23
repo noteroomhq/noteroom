@@ -107,12 +107,12 @@ const ForgotPassword: React.FC = () => {
 
 	return (
 		<AuthLayout imageSrc={ForgotImage}>
-			<div className="w-full h-3/4 lg:h-auto max-w-md relative">
+			<div className="w-full h-3/4 xl:h-auto max-w-md relative">
 				<img
 					src={NoteRoomLogo}
 					alt="NoteRoom Logo"
 					onClick={() => { window.location.href = "https://noteroom.co" }}
-					className="h-16 w-auto mx-auto md:h-20 mb-4 absolute -top-25 -right-4 md:-right-10 xl:-top-60 2xl:-top-80 xl:-right-25 2xl:-right-60 cursor-pointer"
+					className="h-16 w-auto mx-auto xl:h-20 mb-4 absolute -top-25 -right-4 xl:-right-10 xl:-top-60 2xl:-top-80 xl:-right-25 2xl:-right-60 cursor-pointer"
 				/>
 
 				{stage === "email" && (
