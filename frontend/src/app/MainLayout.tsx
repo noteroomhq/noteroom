@@ -40,7 +40,7 @@ function PrimaryMiddleSection({ children }: { children: React.ReactNode[] }) {
 			bg-(--primary-secondary-rightpanel-clr)
 			h-full w-full
 			grid grid-cols-1
-			xl:h-[98.5%] xl:w-[99.5%] xl:self-end xl:grid-cols-[4fr_1fr] xl:rounded-[50px_0_0_0]
+			xl:h-[98.5%] xl:w-[99.5%] xl:self-end xl:grid-cols-[5fr_1.8fr] xl:rounded-[50px_0_0_0]
 		">
 			{children}
 		</div>
@@ -50,7 +50,7 @@ function HolderMiddleSection({ children }: { children: React.ReactNode | React.R
 	return (
 		<div className="holder-middle-section
 			flex flex-col items-center justify-self-center w-full
-			xl:w-[60%]
+			xl:w-[65%]
 		">
 			{children}
 		</div>

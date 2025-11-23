@@ -7,7 +7,7 @@ export default function PostSection() {
 
 	return (
 		<div className='mt-5 relative'>
-			<BackButton className='hidden md:block xl:block fixed md:left-[7%] lg:left-[15%] xl:left-[25%]' onClick={() => navigate(-1)} />
+			<BackButton className='hidden md:block xl:block fixed md:left-[7%] lg:left-[13%] xl:left-[23%]' onClick={() => navigate(-1)} />
 			<FeedMediaPost isLast={false} withMedia={true} />
 		</div>
 	)
